@@ -1,0 +1,198 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "とれろぐ",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AmountIntent",
+          "slots": [
+            {
+              "name": "Weight",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "Count",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "Span",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "{Weight} キロ {Count} 回 {Span} セット"
+          ]
+        },
+        {
+          "name": "TrainingIntent",
+          "slots": [
+            {
+              "name": "Traning",
+              "type": "TraningName"
+            }
+          ],
+          "samples": [
+            "これから {Traning} を始めます",
+            "これから {Traning} します",
+            "これから {Traning} を頑張ります",
+            "これから {Traning} やる",
+            "これから {Traning} をやる",
+            "これから {Traning} をします",
+            "これから {Traning} をやります",
+            "これから {Traning} やります",
+            "{Traning} をやりました",
+            "{Traning} をやります",
+            "{Traning} をします",
+            "{Traning} です",
+            "種目は {Traning} をします",
+            "種目は {Traning} をやります",
+            "種目は {Traning} にします",
+            "やるのは {Traning} にします",
+            "やるのは {Traning} です",
+            "やるのは {Traning} ",
+            "{Traning}",
+            "種目は {Traning} です",
+            "やったのは {Traning} です",
+            "種目は {Traning} をやりました",
+            "種目は {Traning} をやった",
+            "種目は {Traning} でした",
+            "種目は {Traning} ",
+            "{Traning} をやった",
+            "種目は {Traning} をした",
+            "種目は {Traning} をしました",
+            "{Traning} をした",
+            "{Traning} をしました",
+            "{Traning} を記録",
+            "{Traning} を記録して",
+            "{Traning} を記録してください"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "腕立て伏せ",
+                "synonyms": [
+                  "プッシュアップ"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "ベンチプレス"
+              }
+            },
+            {
+              "name": {
+                "value": "懸垂",
+                "synonyms": [
+                  "チンニング"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "スクワット",
+                "synonyms": [
+                  "ハイバースクワット",
+                  "ローバースクワット"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "デッドリフト"
+              }
+            },
+            {
+              "name": {
+                "value": "サイドレイズ",
+                "synonyms": [
+                  "ダンベルサイドレイズ"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "サイドベント"
+              }
+            },
+            {
+              "name": {
+                "value": "シーテッドロー"
+              }
+            },
+            {
+              "name": {
+                "value": "アームカール"
+              }
+            },
+            {
+              "name": {
+                "value": "腹筋"
+              }
+            },
+            {
+              "name": {
+                "value": "トーソローテーション"
+              }
+            },
+            {
+              "name": {
+                "value": "背筋"
+              }
+            },
+            {
+              "name": {
+                "value": "ショルダープレス"
+              }
+            },
+            {
+              "name": {
+                "value": "ダンベルフライ"
+              }
+            },
+            {
+              "name": {
+                "value": "アブダクター"
+              }
+            },
+            {
+              "name": {
+                "value": "レッグエクステンション"
+              }
+            },
+            {
+              "name": {
+                "value": "シーテッドレッグカール"
+              }
+            }
+          ],
+          "name": "TraningName"
+        }
+      ]
+    }
+  }
+}
