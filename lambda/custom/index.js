@@ -1,12 +1,3 @@
-/**
- * サンプル発話
- * 
- * ベンチプレス
- * 50キログラムです
- * 10回やりました
- * 3セットやりました
- */
-
 'use strict';
 
 const Alexa = require('alexa-sdk');
@@ -87,7 +78,6 @@ const traningHandlers = Alexa.CreateStateHandler(states.TRANINGTYPEMODE, {
         const now = new Date();
         this.attributes['now'] = now.toString();
         const name = {'name': this.event.request.intent.slots.Traning.value};
-        //this.attributes[now.toString()] = {};
         this.attributes[now.toString()] = {'name': this.event.request.intent.slots.Traning.value};
 
         this.emit(':ask', '次にウェイトや回数、セット数を教えてください');
@@ -118,17 +108,27 @@ const amountHandlers = Alexa.CreateStateHandler(states.TRANINGAMOUNTMODE, {
     'AmountIntent': function () {
         const now = this.attributes['now'];
         const weight = this.event.request.intent.slots.Weight.value;
+        // ウェイトは種目によっては存在しない
         if (weight) {
-            this.attributes[now]['weight'] = this.event.request.intent.slots.Weight.value;
-            //this.attributes['weight'] = weight;
+            if (isNan(weight)) {
+                this.attributes[now]['weight'] = this.event.request.intent.slots.Weight.value;
+            } else {
+                this.emit(':ask', 'すみません。聞き取れませんでした。もう一度ウェイトを教えてください。');
+            }
         }
         const count = this.event.request.intent.slots.Count.value;
-        this.attributes[now]['count'] = this.event.request.intent.slots.Count.value;
-        //this.attributes['count'] = count;
+        if (isNan(count)) {
+            this.attributes[now]['count'] = this.event.request.intent.slots.Count.value;
+        } else {
+            this.emit(':ask', 'すみません。聞き取れませんでした。もう一度回数を教えてください。');
+        }
         
         const span = this.event.request.intent.slots.Span.value;
-        this.attributes[now]['span'] = this.event.request.intent.slots.Span.value;
-        //this.attributes['span'] = span;
+        if (isNan(span)) {
+            this.attributes[now]['span'] = this.event.request.intent.slots.Span.value;
+        } else {
+            this.emit(':ask', 'すみません。聞き取れませんでした。もう一度セット数を教えてください。');
+        }
         
         this.handler.state = '';
         delete this.attributes['STATE'];
@@ -138,7 +138,6 @@ const amountHandlers = Alexa.CreateStateHandler(states.TRANINGAMOUNTMODE, {
         } else {
             this.emit(':tell', count + '回、' + span + 'セットですね。記録しました！');
         }
-        
     },
     'AMAZON.HelpIntent': function () {
         this.emit(':ask', '今日の筋トレを記録します。まずはどんな種目をしたのか教えてください。', '今日の筋トレを記録します。まずはどんな種目をしたのか教えてください。');
